@@ -1,0 +1,42 @@
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Virtual Gallery</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+<header th:replace="fragments/navbar">Navbar</header>
+<main>
+    <div class="container-fluid"
+         th:object="${order}">
+        <h1>Order No <span th:text="*{id}"></span></h1>
+        <div class="row justify-content-center">
+            <div class="col-auto p-3">
+                <div class="card" style="width: 16rem; background-color: #fff7e6">
+                    <div class="card-body">
+                        <p class="card-text">Ordered on <span th:text="*{dateOfOrder}"></span></p>
+                        <p class="card-text">Status: <span th:text="*{status}"></span></p>
+                        <p class="card-text">Painting: <span th:text="*{painting}"></span></p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<th:block th:include="fragments/footer"></th:block>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+</html>

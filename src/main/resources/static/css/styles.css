@@ -1,0 +1,36 @@
+body {
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+     background-color: #fecbb3;
+     text-align: center;
+     background-image: url('/images/texture.jpg');
+ }
+
+.navbar-brand {
+     font-family: "Brush Script MT", cursive;
+     font-size: 30px;
+
+}
+footer {
+    margin-top: 2rem;
+    bottom: 0;
+    width: 100%;
+    font-family: "Brush Script MT", cursive;
+}
+
+.container-fluid {
+     padding-top: 100px;
+     font-family: "Brush Script MT", cursive;
+
+
+}
+
+.container {
+     padding-top: 200px;
+}
+
+.card-text {
+    font-family: "Brush Script MT", cursive;
+}

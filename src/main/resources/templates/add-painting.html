@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Virtual Gallery</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+<header th:replace="fragments/navbar">Navbar</header>
+<main>
+    <div class="container p-5">
+        <h2 class="text-center text-dark">Add painting</h2>
+        <div class="d-flex justify-content-center p-3">
+            <form
+                    th:action="@{/paintings/add}"
+                    th:method="post"
+                    th:object="${paintingModel}">
+                <div class="form-group col-auto">
+                    <label for="title" class="font-weight-bold">Title</label>
+                    <input type="text" class="form-control" id="title"
+                           th:field="*{title}"
+                           th:errorclass="is-invalid"
+                           aria-describedby="titleHelp"
+                           placeholder="Enter title">
+                    <small id="titleError" class="invalid-feedback errors alert alert-danger">Title must be
+                        more than 2 characters</small>
+                </div>
+                <div class="form-group col-auto">
+                    <label for="description" class="font-weight-bold">Description</label>
+                    <input type="text" class="form-control" id="description"
+                           th:field="*{description}"
+                           th:errorclass="is-invalid"
+                           aria-describedby="descriptionHelp"
+                           placeholder="Enter description">
+                    <small id="descriptionError" class="invalid-feedback errors alert alert-danger">Description must be
+                        mor than 3 characters</small>
+                </div>
+                <div class="form-group col-auto">
+                    <label for="url" class="font-weight-bold">Picture url</label>
+                    <input type="text" class="form-control" id="url"
+                           th:field="*{url}"
+                           th:errorclass="is-invalid"
+                           aria-describedby="urlHelp"
+                           placeholder="Enter picture ulr">
+                    <small id="urlError" class="invalid-feedback errors alert alert-danger">Url must be
+                        valid</small>
+                </div>
+                <div class="form-group col-auto">
+                    <label for="artistId" class="font-weight-bold">Artist</label>
+                    <select class="form-control" id="artistId"
+                           name="artistId"
+                           th:errorclass="is-invalid"
+                           aria-describedby="artistIdHelp">
+                        <option value="">- Select an artist -</option>
+                        <option
+                                th:each="artist: ${artists}"
+                                th:text="${artist.name}"
+                                th:value="${artist.artistId}"
+                                th:selected="${artist.artistId} == *{artistId}"
+                        > Artist
+                        </option>
+
+                    </select>
+                    <small id="artistIdError" class="invalid-feedback errors alert alert-danger">Artist must be
+                        selected</small>
+                </div>
+                <div class="form-group col-auto">
+                    <label for="categoryName" class="font-weight-bold">Category</label>
+                    <select class="form-control" id="categoryName"
+                           name="categoryName"
+                           th:errorclass="is-invalid"
+                           aria-describedby="categoryHelp">
+                        <option value="">- Select art category -</option>
+                        <option
+                                th:each="e: ${T(com.example.virtualGallery.model.enums.ArtCategory).values()}"
+                                th:text="${e}"
+                                th:value="${e}"
+                                th:selected="${e} == *{categoryName}"
+                        > Category
+                        </option>
+                    </select>
+                    <small id="categoryError" class="invalid-feedback errors alert alert-danger">Category must be
+                        selected</small>
+                </div>
+                <div class="form-group col-auto">
+                    <label for="price" class="font-weight-bold">Price</label>
+                    <input type="number" class="form-control" id="price"
+                           th:field="*{price}"
+                           th:errorclass="is-invalid"
+                           aria-describedby="priceHelp"
+                           placeholder="Price">
+                    <small id="priceError" class="invalid-feedback errors alert alert-danger">Price must be
+                        valid</small>
+                </div>
+                <button type="submit" class="btn btn-dark">Submit</button>
+
+            </form>
+        </div>
+    </div>
+</main>
+
+<th:block th:include="fragments/footer"></th:block>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+</html>
