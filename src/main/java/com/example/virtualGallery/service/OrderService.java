@@ -73,4 +73,8 @@ public class OrderService {
 
         return this.orderRepository.findAll().stream().map(orderMapper::orderToOrderDTO).collect(Collectors.toList());
     }
+
+    public long countOrders() {
+        return this.orderRepository.count();
+    }
 }

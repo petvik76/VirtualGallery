@@ -1,10 +1,17 @@
 package com.example.virtualGallery.model.dto;
 
+import com.example.virtualGallery.model.customValidation.MatchField;
+
 import javax.validation.constraints.Email;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@MatchField(
+        first = "password",
+        second = "confirmPassword",
+        message = "Passwords do not match."
+)
 public class RegisterDTO {
 
     @NotEmpty
