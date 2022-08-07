@@ -45,4 +45,6 @@ public class ViewOrderDTO {
     public void setPainting(String painting) {
         this.painting = painting;
     }
+
+
 }

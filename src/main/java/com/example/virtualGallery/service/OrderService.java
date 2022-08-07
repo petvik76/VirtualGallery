@@ -35,7 +35,7 @@ public class OrderService {
 
     }
 
-    
+
     public void addNewOrder(long id, UserEntity user) {
         Optional<Order> orderByPaintingId = this.orderRepository.findByPaintingId(id);
         if (orderByPaintingId.isPresent()) {
@@ -56,8 +56,8 @@ public class OrderService {
         return this.orderRepository.findByBuyerId(id).stream().map(orderMapper::orderToOrderDTO).collect(Collectors.toList());
     }
 
-    public Order getOrderById(long id) {
-        return this.orderRepository.findById(id).orElseThrow(OrderNotFoundException::new);
+    public ViewOrderDTO getOrderById(long id) {
+        return orderMapper.orderToOrderDTO(this.orderRepository.findById(id).orElseThrow(OrderNotFoundException::new));
     }
 
     @Transactional
