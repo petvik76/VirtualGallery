@@ -8,6 +8,7 @@
     <title>Virtual Gallery</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/styles.css">
+
 </head>
 
 <body>
@@ -25,7 +26,7 @@
                         <p class="card-text">Status: <span th:text="${order.status}"></span></p>
                         <p class="card-text">Painting: <span th:text="${order.painting}"></span></p>
                         <form th:action="@{/delete-order/{id}(id = ${order.id})}"
-                              th:method="post"
+                              th:method="delete"
                               sec:authorize="hasRole('ADMINISTRATOR')">
                             <button type="submit" class="btn btn-dark">Delete Order</button>
                         </form>

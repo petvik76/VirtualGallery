@@ -42,7 +42,7 @@ public class UserDetailsServiceTest {
         Role role1 = new Role();
         role1.setRole(UserRole.ADMINISTRATOR);
         Role role2 = new Role();
-        role2.setRole(UserRole.MODERATOR);
+        role2.setRole(UserRole.USER);
         testUserEntity.setRoles(List.of(role1, role2));
 
         when(mockUserRepository.findByUsername(testUserEntity.getUsername())).thenReturn(Optional.of(testUserEntity));
@@ -59,7 +59,7 @@ public class UserDetailsServiceTest {
         Assertions.assertEquals(2, authorities.size());
 
         Assertions.assertEquals("ROLE_" + UserRole.ADMINISTRATOR.name(), iterator.next().getAuthority());
-        Assertions.assertEquals("ROLE_" + UserRole.MODERATOR.name(), iterator.next().getAuthority());
+        Assertions.assertEquals("ROLE_" + UserRole.USER.name(), iterator.next().getAuthority());
 
     }
 
