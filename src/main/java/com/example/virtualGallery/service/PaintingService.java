@@ -42,7 +42,7 @@ public class PaintingService {
     }
 
     public ViewPaintingDTO getPaintingById(long id) {
-        Painting paintingById = this.paintingRepository.findById(id).orElseThrow(PaintingNotFoundException::new);
+        Painting paintingById = getOrderPaintingById(id);
         return paintingMapper.paintingToPaintingDTO(paintingById);
 
     }
@@ -66,4 +66,7 @@ public class PaintingService {
     }
 
 
+    public List<ViewPaintingDTO> getAllPaintings() {
+        return this.paintingRepository.findAll().stream().map(paintingMapper::paintingToPaintingDTO).collect(Collectors.toList());
+    }
 }
