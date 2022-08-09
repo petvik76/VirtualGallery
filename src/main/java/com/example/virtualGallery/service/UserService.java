@@ -1,5 +1,6 @@
 package com.example.virtualGallery.service;
 
+import com.example.virtualGallery.exception.UserNotFoundException;
 import com.example.virtualGallery.model.dto.RegisterDTO;
 import com.example.virtualGallery.model.dto.view.ViewPaintingDTO;
 import com.example.virtualGallery.model.entity.Order;
@@ -66,6 +67,6 @@ public class UserService {
 
 
     public UserEntity getUserbyUsername(String username) {
-       return this.userRepository.findByUsername(username).orElseThrow();
+       return this.userRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
     }
 }

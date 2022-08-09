@@ -21,7 +21,7 @@ public class ScheduleOrders {
     @Scheduled(cron = "0 0 0 * * *")
     public void countOrders() {
         long ordersCount = this.orderService.countOrders();
-        log.info("The orders count is" + ordersCount + "on" + LocalDate.now());
+        log.info("The orders count is " + ordersCount + " on " + LocalDate.now());
 
     }
 }

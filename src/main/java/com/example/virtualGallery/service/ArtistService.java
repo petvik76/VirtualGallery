@@ -1,5 +1,6 @@
 package com.example.virtualGallery.service;
 
+import com.example.virtualGallery.exception.ArtistNotFoundException;
 import com.example.virtualGallery.model.dto.ArtistDTO;
 import com.example.virtualGallery.model.dto.view.ViewArtistDTO;
 import com.example.virtualGallery.model.entity.Artist;
@@ -27,15 +28,15 @@ public class ArtistService {
     }
 
     public ViewArtistDTO getArtistById(long id) {
-        Artist artist = this.artistRepository.findById(id).orElseThrow();
+        Artist artist = this.artistRepository.findById(id).orElseThrow(ArtistNotFoundException::new);
 
         return artistMapper.artistToArtistDTO(artist);
 
 
     }
 
-    public void addArtist(ArtistDTO artistModel) {
+    public Artist addArtist(ArtistDTO artistModel) {
         Artist newArtist = artistMapper.artistDtoToArtist(artistModel);
-        this.artistRepository.save(newArtist);
+        return this.artistRepository.save(newArtist);
     }
 }

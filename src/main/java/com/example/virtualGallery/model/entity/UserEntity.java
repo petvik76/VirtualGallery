@@ -38,6 +38,7 @@ public class UserEntity {
     private List<Order> orders;
 
     public UserEntity() {
+        this.roles = new ArrayList<>();
         this.orders = new ArrayList<>();
     }
 
@@ -87,6 +88,10 @@ public class UserEntity {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 
     public boolean isActive() {
