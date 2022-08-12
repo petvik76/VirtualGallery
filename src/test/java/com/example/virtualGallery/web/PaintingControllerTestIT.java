@@ -49,19 +49,6 @@ public class PaintingControllerTestIT {
                 .andExpect(view().name("categories"));
     }
 
-    @Test
-    @WithMockUser(roles = "ADMINISTRATOR")
-    void testAddPainting() throws Exception {
-        mockMvc.perform(post("/paintings/add")
-                        .param("title", "aaa")
-                        .param("description", "aaa")
-                        .param("url", "url")
-                        .param("artistId", "1")
-                        .param("categoryName", "MODERN")
-                        .param("price", "1")
-                        .with(csrf()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/categories"));
-    }
+
 
 }
